@@ -1,0 +1,9 @@
+<library path="three_wheel_omni">
+  <class name="three_wheel_omni/ThreeWheelOmniSystemHardware"
+         type="three_wheel_omni::ThreeWheelOmniSystemHardware"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>
+      Hardware interface for the 3-Wheel Omni Robot communicating via Arduino.
+    </description>
+  </class>
+</library>
