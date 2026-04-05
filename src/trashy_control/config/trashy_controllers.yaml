@@ -1,0 +1,32 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 30
+    use_sim_time: false 
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    omni_base_controller:
+      type: omni_wheel_drive_controller/OmniWheelDriveController
+
+omni_base_controller:
+  ros__parameters:
+    wheels_names:
+      - wheel_1_joint
+      - wheel_2_joint
+      - wheel_3_joint
+
+    wheel_radius: 0.05    #  in meters
+    robot_radius: 0.15    # distance from center to wheels in meters
+    
+    # angles in radians (0, 120, 240 deg)
+    wheels_angle:
+      - 0.0
+      - 2.094395
+      - 4.188790
+
+    odom_frame_id: odom
+    base_frame_id: base_link
+    publish_rate: 30.0
+    open_loop: false      # true for not using encoders for odom
+    use_stamped_vel: false 

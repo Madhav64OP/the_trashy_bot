@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<robot name="trashy" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:arg name="use_sim" default="false"/>
+
+    <xacro:include filename="trashy_bot.urdf.xacro"/>
+    <xacro:include filename="trashy_ros2_control.urdf.xacro"/>
+    <!-- <xacro:trashy_ros2_control use_sim="$(arg use_sim)"/> -->
+
+    <!-- Odom calculation ki BT dur karne ke liye -->
+    <link name="base_footprint"/>
+    <joint name="base_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
+        <origin xyz="0 0 0.05" rpy="0 0 0"/> <!-- 0.05 matches your wheel radius -->
+    </joint>
+</robot>

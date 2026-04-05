@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<robot name="trashy_bot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <cylinder radius="0.2" length="0.05"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+    </link>
+
+    <!-- Wheel Macro for easy placement -->
+    <xacro:macro name="omni_wheel" params="prefix angle x y">
+        <link name="${prefix}_link">
+            <visual>
+                <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+                <geometry>
+                    <cylinder radius="0.05" length="0.04"/>
+                </geometry>
+                <!-- <material name="black"/> -->
+            </visual>
+        </link>
+
+        <joint name="${prefix}_joint" type="continuous">
+            <parent link="base_link"/>
+            <child link="${prefix}_link"/>
+            <origin xyz="${x} ${y} 0" rpy="0 0 ${angle}"/>
+            <axis xyz="0 1 0"/>
+        </joint>
+    </xacro:macro>
+
+    <!-- Placing 3 Wheels at 120 degree intervals -->
+    <!-- Wheel 1: Front (0 degrees) -->
+    <xacro:omni_wheel prefix="wheel_1" angle="0" x="0.2" y="0"/>
+    
+    <!-- Wheel 2: Back Left (120 degrees / 2.094 rad) -->
+    <xacro:omni_wheel prefix="wheel_2" angle="2.094395" x="-0.1" y="0.1732"/>
+    
+    <!-- Wheel 3: Back Right (240 degrees / 4.188 rad) -->
+    <xacro:omni_wheel prefix="wheel_3" angle="4.188790" x="-0.1" y="-0.1732"/>
+</robot>
